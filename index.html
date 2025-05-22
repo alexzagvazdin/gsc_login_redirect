@@ -87,32 +87,25 @@
     </div>
 
     <script>
-        // Function to attempt the redirect
-        function attemptRedirect() {
-            // The deep link URL
-            const deepLink = "https://admin.gospotcheck.com/users/sign_in?connection=Kroger-Production";
+        // Function to simulate button click
+        function simulateButtonClick() {
+            const button = document.querySelector('.button');
             
-            // Try to redirect using window.open
-            const openResult = window.open(deepLink, '_blank');
-            
-            // Set a timeout to check if the redirect worked
-            // If window.open returns null or undefined, it might have been blocked
-            if (!openResult) {
-                document.querySelector('.spinner').style.display = 'none';
-                document.querySelector('.loading').innerHTML = 'Pop-up was blocked. Please click the button below:';
-                document.querySelector('.button').style.backgroundColor = '#e74c3c';
-            } else {
-                setTimeout(function() {
-                    // If we're still on this page, show the button more prominently
-                    document.querySelector('.spinner').style.display = 'none';
-                    document.querySelector('.loading').innerHTML = 'Automatic redirect may not have worked. Please click the button below:';
-                    document.querySelector('.button').style.backgroundColor = '#e74c3c';
-                }, 3000);
+            // Simulate a click event on the button
+            if (button) {
+                button.click();
             }
+            
+            // After attempting the click, show fallback message
+            setTimeout(function() {
+                document.querySelector('.spinner').style.display = 'none';
+                document.querySelector('.loading').innerHTML = 'If the app didn\'t open automatically, please click the button below:';
+                document.querySelector('.button').style.backgroundColor = '#e74c3c';
+            }, 2000);
         }
         
-        // Attempt redirect when the page loads
-        window.onload = attemptRedirect;
+        // Simulate button click when DOM is ready
+        document.addEventListener('DOMContentLoaded', simulateButtonClick);
     </script>
 </body>
 </html>
