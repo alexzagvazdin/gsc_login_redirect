@@ -97,18 +97,18 @@
             
             // Set a timeout to check if the redirect worked
             // If window.open returns null or undefined, it might have been blocked
-            if (!openResult) {
-                document.querySelector('.spinner').style.display = 'none';
-                document.querySelector('.loading').innerHTML = 'Pop-up was blocked. Please click the button below:';
-                document.querySelector('.button').style.backgroundColor = '#e74c3c';
-            } else {
-                setTimeout(function() {
+            // if (!openResult) {
+            //     document.querySelector('.spinner').style.display = 'none';
+            //     document.querySelector('.loading').innerHTML = 'Pop-up was blocked. Please click the button below:';
+            //     document.querySelector('.button').style.backgroundColor = '#e74c3c';
+            // } else {
+            //     setTimeout(function() {
                     // If we're still on this page, show the button more prominently
                     document.querySelector('.spinner').style.display = 'none';
                     document.querySelector('.loading').innerHTML = 'Automatic redirect may not have worked. Please click the button below:';
                     document.querySelector('.button').style.backgroundColor = '#e74c3c';
-                }, 3000);
-            }
+            //     }, 3000);
+            // }
         }
         
         // Attempt redirect when the page loads
