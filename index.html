@@ -79,33 +79,10 @@
 <body>
     <div class="container">
         <img src="/api/placeholder/200/50" alt="GoSpotCheck Logo" class="logo">
-        <h1>Redirecting to GoSpotCheck</h1>
-        <p>You'll be redirected to the GoSpotCheck app in a moment...</p>
-        <div class="spinner"></div>
-        <div class="loading">If you are not redirected automatically, please click the button below:</div>
+        <h1>Launch GoSpotCheck</h1>
+        <p>Press the button below to open GoSpotCheck</p>
         <a href="https://admin.gospotcheck.com/users/sign_in?connection=Kroger-Production" class="button">Sign In</a>
     </div>
 
-    <script>
-        // Function to simulate button click
-        function simulateButtonClick() {
-            const button = document.querySelector('.button');
-            
-            // Simulate a click event on the button
-            if (button) {
-                button.click();
-            }
-            
-            // After attempting the click, show fallback message
-            setTimeout(function() {
-                document.querySelector('.spinner').style.display = 'none';
-                document.querySelector('.loading').innerHTML = 'If the app didn\'t open automatically, please click the button below:';
-                document.querySelector('.button').style.backgroundColor = '#e74c3c';
-            }, 2000);
-        }
-        
-        // Simulate button click when DOM is ready
-        // document.addEventListener('DOMContentLoaded', simulateButtonClick);
-    </script>
 </body>
 </html>
