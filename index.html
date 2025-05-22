@@ -92,16 +92,23 @@
             // The deep link URL
             const deepLink = "https://admin.gospotcheck.com/users/sign_in?connection=Kroger-Production";
             
-            // Try to redirect
-            window.location.href = deepLink;
+            // Try to redirect using window.open
+            const openResult = window.open(deepLink, '_blank');
             
             // Set a timeout to check if the redirect worked
-            setTimeout(function() {
-                // If we're still on this page, show the button more prominently
+            // If window.open returns null or undefined, it might have been blocked
+            if (!openResult) {
                 document.querySelector('.spinner').style.display = 'none';
-                document.querySelector('.loading').innerHTML = 'Automatic redirect unsuccessful. Please click the button below:';
+                document.querySelector('.loading').innerHTML = 'Pop-up was blocked. Please click the button below:';
                 document.querySelector('.button').style.backgroundColor = '#e74c3c';
-            }, 3000);
+            } else {
+                setTimeout(function() {
+                    // If we're still on this page, show the button more prominently
+                    document.querySelector('.spinner').style.display = 'none';
+                    document.querySelector('.loading').innerHTML = 'Automatic redirect may not have worked. Please click the button below:';
+                    document.querySelector('.button').style.backgroundColor = '#e74c3c';
+                }, 3000);
+            }
         }
         
         // Attempt redirect when the page loads
