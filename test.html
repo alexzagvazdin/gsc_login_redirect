@@ -78,11 +78,34 @@
 </head>
 <body>
     <div class="container">
-        <img src="https://static.gospotcheck.com/assets/form_gospotcheck_logo.png" alt="GoSpotCheck Logo" class="logo">
-        <h1>Launch GoSpotCheck</h1>
-        <p>Press the button below to open GoSpotCheck</p>
-        <a href="gospotcheck://users/sign_in?connection=Kroger-Production" class="button">Sign In</a>
+        <img src="/api/placeholder/200/50" alt="GoSpotCheck Logo" class="logo">
+        <h1>Redirecting to GoSpotCheck</h1>
+        <p>You'll be redirected to the GoSpotCheck app in a moment...</p>
+        <div class="spinner"></div>
+        <div class="loading">If you are not redirected automatically, please click the button below:</div>
+        <a href="https://admin.gospotcheck.com/users/sign_in?connection=Kroger-Production" class="button">Sign In</a>
     </div>
 
+    <script>
+        // Function to attempt the redirect
+        function attemptRedirect() {
+            // The deep link URL
+            const deepLink = "https://admin.gospotcheck.com/users/sign_in?connection=Kroger-Production";
+            
+            // Try to redirect
+            window.location.href = deepLink;
+            
+            // Set a timeout to check if the redirect worked
+            setTimeout(function() {
+                // If we're still on this page, show the button more prominently
+                document.querySelector('.spinner').style.display = 'none';
+                document.querySelector('.loading').innerHTML = 'Automatic redirect unsuccessful. Please click the button below:';
+                document.querySelector('.button').style.backgroundColor = '#e74c3c';
+            }, 3000);
+        }
+        
+        // Attempt redirect when the page loads
+        window.onload = attemptRedirect;
+    </script>
 </body>
 </html>
